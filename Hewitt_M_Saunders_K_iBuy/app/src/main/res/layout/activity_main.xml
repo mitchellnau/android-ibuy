@@ -54,8 +54,15 @@
                 <Button
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
-                    android:text="View"
+                    android:text="Items"
                     android:id="@+id/button2"
+                    android:layout_weight="0.5" />
+
+                <Button
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Users"
+                    android:id="@+id/button16"
                     android:layout_weight="0.5" />
             </LinearLayout>
 
@@ -75,8 +82,15 @@
                 <Button
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
-                    android:text="View"
+                    android:text="Items"
                     android:id="@+id/button"
+                    android:layout_weight="0.5" />
+
+                <Button
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Users"
+                    android:id="@+id/button17"
                     android:layout_weight="0.5" />
 
             </LinearLayout>
