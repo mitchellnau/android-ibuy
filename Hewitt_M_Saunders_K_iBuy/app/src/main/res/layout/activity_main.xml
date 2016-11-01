@@ -9,26 +9,49 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.example.cs399.hewitt_m_saunders_k_ibuy.MainActivity">
 
-    <TextView
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="iBuy"
-        android:id="@+id/textView3"
-        android:textSize="40dp"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true" />
+        android:id="@+id/linearLayout4">
+
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="iBuy"
+            android:id="@+id/textView3"
+            android:textSize="40dp"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:layout_weight="1"
+            android:gravity="right" />
+
+        <Space
+            android:layout_width="fill_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="2" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Settings"
+            android:id="@+id/button3"
+            android:layout_alignParentBottom="true"
+            android:layout_alignRight="@+id/scrollView"
+            android:layout_alignEnd="@+id/scrollView" />
+    </LinearLayout>
 
     <ScrollView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/scrollView"
-        android:layout_below="@+id/textView3"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:layout_above="@+id/button3">
+        android:layout_above="@+id/linearLayout3"
+        android:layout_below="@+id/linearLayout4">
 
         <LinearLayout
             android:orientation="vertical"
@@ -97,22 +120,32 @@
         </LinearLayout>
     </ScrollView>
 
-    <Button
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:text="Settings"
-        android:id="@+id/button3"
-        android:layout_alignParentBottom="true"
-        android:layout_alignRight="@+id/scrollView"
-        android:layout_alignEnd="@+id/scrollView" />
-
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Add List"
-        android:id="@+id/button4"
         android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentStart="true"
+        android:id="@+id/linearLayout3">
+
+        <EditText
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/editText8"
+            android:layout_alignParentBottom="true"
+            android:layout_weight="0.75" />
+
+        <Button
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="Add List"
+            android:id="@+id/button4"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_weight="1" />
+
+    </LinearLayout>
 
 </RelativeLayout>
