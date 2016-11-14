@@ -6,13 +6,8 @@ from django import forms
 ##################################User##################################
 class UserProfile(models.Model):
     user = models.OneToOneField(User)
-    username = models.CharField(max_length = 30)
-    password = models.CharField(max_length = 30)
-
-    def __unicode__(self):
-        return self.user.username
-    def getusername(self):
-        return self.username
+    username = models.CharField(max_length = 32)
+    password = models.CharField(max_length = 32)
 
 class UserForm(forms.ModelForm):
     password = forms.CharField(widget=forms.PasswordInput())
