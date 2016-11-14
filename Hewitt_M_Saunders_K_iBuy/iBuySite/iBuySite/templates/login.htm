@@ -1,8 +1,10 @@
 {% extends 'base.htm' %}
 {% block body %}
+<h1>Login</h1>
+{{ error }}
 <form id="form" method="post">
             {% csrf_token %}
             {{ form.as_p }}
-            <input type="submit" name="submit" value="Submit" />
-        </form>
+            <input type="submit" name="submit" value="Login" />
+</form>
 {% endblock %}
