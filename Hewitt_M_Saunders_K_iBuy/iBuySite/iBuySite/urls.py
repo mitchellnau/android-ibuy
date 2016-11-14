@@ -18,10 +18,8 @@ from django.contrib import admin
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'^', 'iBuySite.views.home', name='home'),
 
-
-    #url(r'^/register', 'iBuySite.views.home', name='register'),
+    url(r'^register/', 'iBuySite.views.register', name='register'),
     #url(r'^/login',    'iBuySite.views.home', name='login'),
 
     #url(r'^/lists', 'iBuySite.views.home', name='lists'),
@@ -38,4 +36,6 @@ urlpatterns = [
     #url(r'list_items/(?P<list_id>\w+)/add_item$', 'iBuySite.views.add_item', name='add_item'),
     #url(r'list_items/(?P<list_id>\w+)/edit_item/(?P<item_id>\w+)/$', 'iBuySite.views.edit_item', name='edit_item'),
     #url(r'list_items/(?P<list_id>\w+)/remove_item/(?P<item_id>\w+)/$', 'iBuySite.views.remove_item', name='remove_item'),
+    url(r'^', 'iBuySite.views.home', name='home'),
+
 ]
