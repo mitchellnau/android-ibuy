@@ -12,7 +12,21 @@ from django.contrib.auth.decorators import login_required
 from django.template.context_processors import csrf
 
 #models
-from iBuySite.models import UserProfile, List, Item, BridgeItemUser, BridgeListUser
+from iBuySite.models import UserForm
 
 def home(request):
 	return render(request, 'index.htm', {})
+
+def register(request):
+        if request.method == 'POST':
+                form = UserForm(data=request.POST)
+                if form.is_valid():
+                    user = form.save()
+                    return HttpResponseRedirect("../login/")
+                else:
+                    print(form.errors)
+        else:
+                form = UserForm()
+        return render(request,
+                      'register.htm',
+                      {'form': form})
