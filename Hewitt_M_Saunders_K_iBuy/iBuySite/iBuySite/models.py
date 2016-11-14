@@ -28,7 +28,7 @@ class List(models.Model):
 
 class ListForm(forms.ModelForm):
     class Meta:
-        model = Item
+        model = List
         fields = ('title', 'user')
 
 
@@ -36,12 +36,25 @@ class ListForm(forms.ModelForm):
 class Item(models.Model):
     title = models.CharField(max_length = 120)
     quantity = models.IntegerField()
-    flock = models.CharField(max_length = 32)
+    urgency_type = (
+        ('1', 'Low'),
+        ('2', 'Medium'),
+        ('3', 'High'))
+    urgency = models.CharField(max_length=1, choices=urgency_type, default='2',
+                                    null=True, blank=True)
+    category_type = (
+        ('1', 'Car'),
+        ('2', 'Groceries'),
+        ('3', 'Household'))
+    category = models.CharField(max_length=1, choices=urgency_type, default='2',
+                                    null=True, blank=True)
+    cost = models.IntegerField()
+    date = models.DateField(auto_now_add=True, blank=True)
 
 class ItemForm(forms.ModelForm):
     class Meta:
         model = Item
-        fields = ('title', 'content', 'quantity')
+        fields = ('title', 'quantity', 'urgency', 'cost', 'category')
 
 
 ##################################Bridge Tables##################################
