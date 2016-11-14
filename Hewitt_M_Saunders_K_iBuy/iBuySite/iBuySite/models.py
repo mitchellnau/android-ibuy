@@ -26,7 +26,7 @@ class List(models.Model):
     title = models.CharField(max_length = 120)
     user = models.ForeignKey(UserProfile)
 
-class ItemForm(forms.ModelForm):
+class ListForm(forms.ModelForm):
     class Meta:
         model = Item
         fields = ('title', 'user')
