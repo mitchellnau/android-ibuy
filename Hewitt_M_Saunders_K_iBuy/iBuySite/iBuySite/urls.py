@@ -20,9 +20,9 @@ urlpatterns = [
     url(r'^admin/', admin.site.urls),
 
     url(r'^register/', 'iBuySite.views.register', name='register'),
-    #url(r'^/login',    'iBuySite.views.home', name='login'),
+    url(r'^login/',    'iBuySite.views.userlogin', name='login'),
 
-    #url(r'^/lists', 'iBuySite.views.home', name='lists'),
+    url(r'^lists/', 'iBuySite.views.home', name='lists'),
     #url(r'^/list_items/(?P<list_id>\w+)/$', 'iBuySite.views.list_items', name='list_items'),
     #url(r'^/list_users/(?P<list_id>\w+)/$', 'iBuySite.views.list_users', name='list_users'),
 
