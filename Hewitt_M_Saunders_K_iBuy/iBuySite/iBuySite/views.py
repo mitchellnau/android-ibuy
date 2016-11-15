@@ -52,3 +52,9 @@ def userlogin(request):
                     'login.htm',
                     {'form': form,
                      'error': ""})
+
+@login_required
+def userlogout(request):
+    logout(request)
+    return render(request, "logout.htm")
+
