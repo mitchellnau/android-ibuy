@@ -7,6 +7,7 @@
             {% csrf_token %}
             <input type="submit" name="submit" value="Remove" />
      </form>
+     <a href="../list_users/{{list.id}}/">Users</a>
   </p>
   
 {% endfor %}
