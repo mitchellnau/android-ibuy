@@ -21,6 +21,8 @@ urlpatterns = [
 
     url(r'^register/', 'iBuySite.views.register', name='register'),
     url(r'^login/',    'iBuySite.views.userlogin', name='login'),
+    url(r'^logout/',    'iBuySite.views.userlogout', name='logout'),
+
 
     url(r'^lists/', 'iBuySite.views.home', name='lists'),
     #url(r'^/list_items/(?P<list_id>\w+)/$', 'iBuySite.views.list_items', name='list_items'),
