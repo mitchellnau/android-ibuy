@@ -1,4 +1,7 @@
 {% extends 'base.htm' %}
 {% block body %}
 Index page.
+{% if user.is_authenticated %}
+You are logged in.
+{% endif %}
 {% endblock %}
