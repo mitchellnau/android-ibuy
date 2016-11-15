@@ -4,6 +4,11 @@ from django import forms
 
 
 ##################################User##################################
+class UserProfile(models.Model):
+    user = models.OneToOneField(User)
+    username = models.CharField(max_length = 32)
+    password = models.CharField(max_length = 32)
+
 class UserForm(forms.ModelForm):
     password = forms.CharField(widget=forms.PasswordInput())
     class Meta:
@@ -14,7 +19,7 @@ class UserForm(forms.ModelForm):
 ##################################List##################################
 class List(models.Model):
     title = models.CharField(max_length = 120)
-    user = models.ForeignKey(User)
+    user = models.ForeignKey(UserProfile)
 
 class ListForm(forms.ModelForm):
     class Meta:
@@ -50,8 +55,8 @@ class ItemForm(forms.ModelForm):
 ##################################Bridge Tables##################################
 class BridgeItemUser(models.Model):
     item = models.ForeignKey(Item)
-    user = models.ForeignKey(User)
+    user = models.ForeignKey(UserProfile)
 
 class BridgeListUser(models.Model):
     list = models.ForeignKey(List)
-    user = models.ForeignKey(User)
+    user = models.ForeignKey(UserProfile)
