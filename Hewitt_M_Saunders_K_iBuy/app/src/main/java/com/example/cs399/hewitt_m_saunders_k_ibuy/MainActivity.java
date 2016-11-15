@@ -15,7 +15,8 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         mWebView = (WebView) findViewById(R.id.activity_main_webview);
-
+        // Loads the URL, currently set to local host and default port.
+        mWebView.loadUrl("127.0.0.1:8000");
         // Enable Javascript
         WebSettings webSettings = mWebView.getSettings();
         webSettings.setJavaScriptEnabled(true);
