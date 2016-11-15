@@ -2,6 +2,7 @@ package com.example.cs399.hewitt_m_saunders_k_ibuy;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.Menu;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 
@@ -18,11 +19,26 @@ public class MainActivity extends AppCompatActivity {
 
         // Force links and redirects to open in the WebView instead of in a browser
         mWebView.setWebViewClient(new MyAppWebViewClient());
-        
+
         // Loads the URL, currently set to local host and default port.
         mWebView.loadUrl("127.0.0.1:8000");
         // Enable Javascript
         WebSettings webSettings = mWebView.getSettings();
         webSettings.setJavaScriptEnabled(true);
     }
+
+    @Override
+    public void onBackPressed() {
+        if(mWebView.canGoBack()) {
+            mWebView.goBack();
+        } else {
+            super.onBackPressed();
+        }
+    }
+    /*
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        ...
+    }
+    */
 }
