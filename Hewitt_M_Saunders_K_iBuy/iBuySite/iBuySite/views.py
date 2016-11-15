@@ -64,7 +64,7 @@ def get_lists(request):
     membered_lists = BridgeListUser.objects.all().filter(user = request.user)
     lists = owned_lists
     form = ListForm()
-    return render(request, 'lists.htm', {'lists' : lists, 'membered_lists' : membered_lists, 'form': form})
+    return render(request, 'lists.htm', {'lists' : owned_lists, 'membered_lists' : membered_lists, 'form': form})
 
 
 @login_required
@@ -89,4 +89,8 @@ def remove_list(request, list_id):
     else:
         return HttpResponseRedirect("../../lists/")
 
-    
+@login_required
+def list_users(request, list_id):
+    temp = List.objects.get(pk=list_id)
+    bridges = BridgeListUser.objects.all().filter(list = temp)
+    return render(request, 'users.htm', {'bridges' : bridges, 'list' : temp})
