@@ -15,7 +15,7 @@ Including another URLconf
 """
 from django.conf.urls import url
 from django.contrib import admin
-from iBuySite.views import home, register, userlogin, userlogout, get_lists, add_list, remove_list
+from iBuySite.views import home, register, userlogin, userlogout, get_lists, add_list, remove_list, list_users
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
@@ -26,14 +26,14 @@ urlpatterns = [
 
     url(r'^lists/', get_lists, name='lists'),
     #url(r'^/list_items/(?P<list_id>\w+)/$', 'iBuySite.views.list_items', name='list_items'),
-    #url(r'^/list_users/(?P<list_id>\w+)/$', 'iBuySite.views.list_users', name='list_users'),
+    url(r'^list_users/(?P<list_id>\w+)/$', list_users, name='list_users'),
 
     url(r'add_list/$', add_list, name='add_list'),
     #url(r'edit_list/(?P<list_id>\w+)/$', 'iBuySite.views.edit_list', name='edit_list'),
     url(r'remove_list/(?P<list_id>\w+)/$', remove_list, name='remove_list'),
 
     #url(r'list/(?P<list_id>\w+)/add_user$', 'iBuySite.views.add_user', name='add_user'),
-    #url(r'list/(?P<list_id>\w+)/remove_user/$', 'iBuySite.views.remove_user', name='remove_user'),
+    #url(r'list/(?P<list_id>\w+)/remove_user/(?P<user_id>\w+)/$', 'iBuySite.views.remove_user', name='remove_user'),
 
     #url(r'list_items/(?P<list_id>\w+)/add_item$', 'iBuySite.views.add_item', name='add_item'),
     #url(r'list_items/(?P<list_id>\w+)/edit_item/(?P<item_id>\w+)/$', 'iBuySite.views.edit_item', name='edit_item'),
