@@ -15,22 +15,22 @@ Including another URLconf
 """
 from django.conf.urls import url
 from django.contrib import admin
+from iBuySite.views import home, register, userlogin, userlogout, get_lists, add_list, remove_list
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
 
-    url(r'^register/', 'iBuySite.views.register', name='register'),
-    url(r'^login/',    'iBuySite.views.userlogin', name='login'),
-    url(r'^logout/',    'iBuySite.views.userlogout', name='logout'),
+    url(r'^register/', register, name='register'),
+    url(r'^login/',  userlogin, name='login'),
+    url(r'^logout/', userlogout, name='logout'),
 
-
-    url(r'^lists/', 'iBuySite.views.home', name='lists'),
+    url(r'^lists/', get_lists, name='lists'),
     #url(r'^/list_items/(?P<list_id>\w+)/$', 'iBuySite.views.list_items', name='list_items'),
     #url(r'^/list_users/(?P<list_id>\w+)/$', 'iBuySite.views.list_users', name='list_users'),
 
-    #url(r'add_list$', 'iBuySite.views.add_list', name='add_list'),
+    url(r'add_list/$', add_list, name='add_list'),
     #url(r'edit_list/(?P<list_id>\w+)/$', 'iBuySite.views.edit_list', name='edit_list'),
-    #url(r'remove_list/(?P<list_id>\w+)/$', 'iBuySite.views.remove_list', name='remove_list'),
+    url(r'remove_list/(?P<list_id>\w+)/$', remove_list, name='remove_list'),
 
     #url(r'list/(?P<list_id>\w+)/add_user$', 'iBuySite.views.add_user', name='add_user'),
     #url(r'list/(?P<list_id>\w+)/remove_user/$', 'iBuySite.views.remove_user', name='remove_user'),
@@ -38,6 +38,6 @@ urlpatterns = [
     #url(r'list_items/(?P<list_id>\w+)/add_item$', 'iBuySite.views.add_item', name='add_item'),
     #url(r'list_items/(?P<list_id>\w+)/edit_item/(?P<item_id>\w+)/$', 'iBuySite.views.edit_item', name='edit_item'),
     #url(r'list_items/(?P<list_id>\w+)/remove_item/(?P<item_id>\w+)/$', 'iBuySite.views.remove_item', name='remove_item'),
-    url(r'^', 'iBuySite.views.home', name='home'),
+    url(r'^', home, name='home'),
 
 ]

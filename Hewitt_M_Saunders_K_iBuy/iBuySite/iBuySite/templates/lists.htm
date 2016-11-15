@@ -1,0 +1,23 @@
+{% extends 'base.htm' %}
+{% block body %}
+<h3>Owned Lists</h3>
+{% for list in lists %}
+  <p>{{list.title}} {{list.user}} 
+     <form id="form" action="../remove_list/{{list.id}}/" method="post">
+            {% csrf_token %}
+            <input type="submit" name="submit" value="Remove" />
+     </form>
+  </p>
+  
+{% endfor %}
+<h3>Membered Lists</h3>
+{% for object in membered_lists %}
+  <p>{{object.list.title}} {{object.list.user}} </p>
+{% endfor %}
+
+<form id="form" action="../add_list/" method="post">
+            {% csrf_token %}
+            {{ form.title }}
+            <input type="submit" name="submit" value="Add List" />
+</form>
+{% endblock %}

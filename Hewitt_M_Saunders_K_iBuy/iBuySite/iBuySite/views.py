@@ -13,7 +13,7 @@ from django.contrib.auth.decorators import login_required
 from django.template.context_processors import csrf
 
 #models
-from iBuySite.models import UserForm
+from iBuySite.models import UserForm, List, ListForm, BridgeListUser
 
 def home(request):
     return render(request, 'index.htm', {})
@@ -40,7 +40,7 @@ def userlogin(request):
         user = authenticate(username=username, password=password)
         if user is not None:
             login(request, user)
-            return HttpResponseRedirect("../lists")
+            return HttpResponseRedirect("../lists/")
         else:
             form = UserForm()
             form.username = username
@@ -58,3 +58,35 @@ def userlogout(request):
     logout(request)
     return render(request, "logout.htm")
 
+@login_required
+def get_lists(request):
+    owned_lists = List.objects.all().filter(user = request.user)
+    membered_lists = BridgeListUser.objects.all().filter(user = request.user)
+    lists = owned_lists
+    form = ListForm()
+    return render(request, 'lists.htm', {'lists' : lists, 'membered_lists' : membered_lists, 'form': form})
+
+
+@login_required
+def add_list(request):
+    if request.method == 'POST':
+        temp = List()
+        temp.title = request.POST['title']
+        temp.user = request.user
+        temp.save()
+        print("List saved.")
+        return HttpResponseRedirect("../lists/")
+    else:
+        return HttpResponseRedirect("../lists/")
+
+@login_required
+def remove_list(request, list_id):
+    if request.method == 'POST':
+        temp = List.objects.get(pk=list_id)
+        if request.user == temp.user:
+            temp.delete()
+        return HttpResponseRedirect("../../lists/")
+    else:
+        return HttpResponseRedirect("../../lists/")
+
+    
