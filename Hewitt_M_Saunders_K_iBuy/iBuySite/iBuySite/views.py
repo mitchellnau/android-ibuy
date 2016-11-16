@@ -152,7 +152,6 @@ def list_items(request, list_id):
     addform = ItemListForm()
     return render(request, 'items.htm', {'bridges' : bridges, 'list' : temp, 'createform' : createform, 'addform' : addform})
 
-
 @login_required
 def create_item(request, list_id):
     if request.method == 'POST':
@@ -197,6 +196,7 @@ def add_item(request, list_id):
         temp = BridgeItemList()
         temp.item = Item.objects.get(pk=request.POST['item'])
         temp.list = List.objects.get(pk=list_id)
+        temp.user = User.objects.get(pk=request.POST['user'])
         temp.save()
         print("Item added to list.")
         return HttpResponseRedirect("/../list_items/" + str(list_id) + "/")

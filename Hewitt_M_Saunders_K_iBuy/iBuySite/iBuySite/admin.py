@@ -1,5 +1,5 @@
 from django.contrib import admin
-from iBuySite.models import List, Item, BridgeItemUser, BridgeListUser
+from iBuySite.models import List, Item, BridgeItemList, BridgeListUser
 
 # Register your models here.
 #class SeatsAdmin(admin.ModelSeats):
@@ -9,5 +9,5 @@ from iBuySite.models import List, Item, BridgeItemUser, BridgeListUser
 
 admin.site.register(List)
 admin.site.register(Item)
-admin.site.register(BridgeItemUser)
+admin.site.register(BridgeItemList)
 admin.site.register(BridgeListUser)

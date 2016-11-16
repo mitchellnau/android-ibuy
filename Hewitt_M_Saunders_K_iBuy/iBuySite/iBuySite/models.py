@@ -47,6 +47,11 @@ class Item(models.Model):
     def __str__(self):
         return self.title
 
+
+    @property
+    def assignees(self):
+        return BridgeItemUser.objects.all()
+
 class ItemForm(forms.ModelForm):
     class Meta:
         model = Item
@@ -54,24 +59,19 @@ class ItemForm(forms.ModelForm):
 
 
 ##################################Bridge Tables##################################
-class BridgeItemUser(models.Model):
-    item = models.ForeignKey(Item)
-    user = models.ForeignKey(User)
-
 class BridgeItemList(models.Model):
     item = models.ForeignKey(Item)
     list = models.ForeignKey(List)
+    user = models.ForeignKey(User)
 
 class BridgeListUser(models.Model):
     list = models.ForeignKey(List)
     user = models.ForeignKey(User)
 
-
-
 class ItemListForm(forms.ModelForm):
     class Meta:
         model = BridgeItemList
-        fields = ('item', 'list')
+        fields = ('item', 'list', 'user')
 
 class ListUserForm(forms.ModelForm):
     class Meta:
