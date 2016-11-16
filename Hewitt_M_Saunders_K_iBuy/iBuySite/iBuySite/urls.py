@@ -17,10 +17,12 @@ from django.conf.urls import url, patterns, include
 from django.contrib import admin
 from django.conf import settings
 from django.conf.urls.static import static
-from iBuySite.views import home, register, userlogin, userlogout, get_lists, add_list, edit_list, remove_list, list_users, add_listuser, remove_user, list_items, create_item, add_item, remove_item, edit_item
+from iBuySite.views import home, about, register, userlogin, userlogout, get_lists, add_list, edit_list, remove_list, list_users, add_listuser, remove_user, list_items, create_item, add_item, remove_item, edit_item
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
+
+    url(r'^about/', about, name='about'),
 
     url(r'^register/', register, name='register'),
     url(r'^login/',  userlogin, name='login'),

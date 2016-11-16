@@ -18,6 +18,9 @@ from iBuySite.models import UserForm, List, ListForm, BridgeListUser, ListUserFo
 def home(request):
     return render(request, 'index.htm', {})
 
+def about(request):
+    return render(request, 'about.htm', {})
+
 def register(request):
     if request.method == 'POST':
         form = UserForm(data=request.POST)
