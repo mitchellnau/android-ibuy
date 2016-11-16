@@ -21,7 +21,8 @@ public class MainActivity extends AppCompatActivity {
         mWebView.setWebViewClient(new MyAppWebViewClient());
 
         // Loads the URL, currently set to local host and default port.
-        mWebView.loadUrl("127.0.0.1:8000");
+        // cmd > ipconfig > ipv4 address
+        mWebView.loadUrl("http://192.168.56.1:8080/");
         // Enable Javascript
         WebSettings webSettings = mWebView.getSettings();
         webSettings.setJavaScriptEnabled(true);
