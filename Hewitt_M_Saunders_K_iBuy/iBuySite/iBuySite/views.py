@@ -79,6 +79,27 @@ def add_list(request):
     else:
         return HttpResponseRedirect("../lists/")
 
+
+@login_required
+def edit_list(request, list_id):
+    list = List.objects.get(pk=list_id)
+    form = ListForm(instance=list)
+    if request.method == 'POST':
+        form = ListForm(data=request.POST, instance=list)
+        if form.is_valid():
+            temp = form.save(commit=False)
+            temp.save()
+            print("Item saved.")
+            return HttpResponseRedirect("/../lists/")
+        else:
+            print(form.errors)
+    elif request.method == 'GET':
+        form = ListForm(instance=list)
+        return render(request, 'edit_list.htm', { 'list' : list, 'form' : form, 'errors' : form.errors})
+    else:
+        return render(request, 'edit_list.htm', { 'list' : list, 'form' : form, 'errors' : form.errors})
+
+
 @login_required
 def remove_list(request, list_id):
     if request.method == 'POST':
