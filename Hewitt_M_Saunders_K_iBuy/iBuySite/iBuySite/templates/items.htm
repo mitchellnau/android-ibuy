@@ -43,16 +43,19 @@
 </table>  
 </div>
 {% endfor %}
-
-<form id="addform" action="/list_items/{{list.id}}/add_item/" method="post">
+<div class="panel panel-default">
+<p>
+<form class="form-inline" id="addform" action="/list_items/{{list.id}}/add_item/" method="post">
             {% csrf_token %}
             {{ addform|bootstrap }}
             <input class="btn btn-success" type="submit" name="submit" value="Add Item" />
 </form>
+</p>
+</div>
 
-<button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+<p><button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
   Create Item Form
-</button>
+</button></p>
 <div class="collapse" id="collapseExample">
   <div class="well">
 <form id="createform" action="/../list_items/{{list.id}}/create_item/" method="post">
