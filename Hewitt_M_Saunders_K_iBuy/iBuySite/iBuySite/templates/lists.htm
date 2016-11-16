@@ -2,7 +2,7 @@
 {% block body %}
 <h3>Owned Lists</h3>
 {% for list in lists %}
-  <p>{{list.title}} {{list.user}} 
+  <p><a href="/../list_items/{{list.id}}/">{{list.title}}</a> {{list.user}} 
      <form id="form" action="../remove_list/{{list.id}}/" method="post">
             {% csrf_token %}
             <input type="submit" name="submit" value="Remove" />

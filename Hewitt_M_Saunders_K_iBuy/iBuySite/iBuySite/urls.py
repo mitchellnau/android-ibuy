@@ -17,7 +17,7 @@ from django.conf.urls import url
 from django.contrib import admin
 from django.conf import settings
 from django.conf.urls.static import static
-from iBuySite.views import home, register, userlogin, userlogout, get_lists, add_list, remove_list, list_users, add_listuser, remove_user
+from iBuySite.views import home, register, userlogin, userlogout, get_lists, add_list, remove_list, list_users, add_listuser, remove_user, list_items, create_item, add_item
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
@@ -27,7 +27,7 @@ urlpatterns = [
     url(r'^logout/', userlogout, name='logout'),
 
     url(r'^lists/', get_lists, name='lists'),
-    #url(r'^/list_items/(?P<list_id>\w+)/$', 'iBuySite.views.list_items', name='list_items'),
+    url(r'^list_items/(?P<list_id>\w+)/$', list_items, name='list_items'),
     url(r'^list_users/(?P<list_id>\w+)/$', list_users, name='list_users'),
 
     url(r'add_list/$', add_list, name='add_list'),
@@ -37,7 +37,8 @@ urlpatterns = [
     url(r'list/(?P<list_id>\w+)/add_user/$', add_listuser, name='add_listuser'),
     url(r'list/(?P<list_id>\w+)/remove_user/(?P<bridge_id>\w+)/$', remove_user, name='remove_user'),
 
-    #url(r'list_items/(?P<list_id>\w+)/add_item$', 'iBuySite.views.add_item', name='add_item'),
+    url(r'list_items/(?P<list_id>\w+)/create_item/$', create_item, name='create_item'),
+    url(r'list_items/(?P<list_id>\w+)/add_item/$', add_item, name='add_item'),
     #url(r'list_items/(?P<list_id>\w+)/edit_item/(?P<item_id>\w+)/$', 'iBuySite.views.edit_item', name='edit_item'),
     #url(r'list_items/(?P<list_id>\w+)/remove_item/(?P<item_id>\w+)/$', 'iBuySite.views.remove_item', name='remove_item'),
     url(r'^', home, name='home'),

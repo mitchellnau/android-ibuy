@@ -13,7 +13,7 @@ from django.contrib.auth.decorators import login_required
 from django.template.context_processors import csrf
 
 #models
-from iBuySite.models import UserForm, List, ListForm, BridgeListUser, ListUserForm
+from iBuySite.models import UserForm, List, ListForm, BridgeListUser, ListUserForm, Item, ItemForm, BridgeItemList, ItemListForm
 
 def home(request):
     return render(request, 'index.htm', {})
@@ -121,3 +121,43 @@ def remove_user(request, list_id, bridge_id):
         return HttpResponseRedirect("/../list_users/" + str(list_id) + "/")
     else:
         return HttpResponseRedirect("/../list_users/" + str(list_id) + "/")
+
+@login_required
+def list_items(request, list_id):
+    temp = List.objects.get(pk=list_id)
+    bridges = BridgeItemList.objects.all().filter(list = temp)
+
+    createform = ItemForm()
+    addform = ItemListForm()
+    return render(request, 'items.htm', {'bridges' : bridges, 'list' : temp, 'createform' : createform, 'addform' : addform})
+
+
+@login_required
+def create_item(request, list_id):
+    if request.method == 'POST':
+        form = ItemForm(data=request.POST)
+        if form.is_valid():
+            temp = Item()
+            temp.title = request.POST['title']
+            temp.quantity = request.POST['quantity']
+            temp.urgency = request.POST['urgency']
+            temp.cost = request.POST['cost']
+            temp.save()
+            print("Item saved.")
+            return HttpResponseRedirect("/../list_items/" + str(list_id) + "/")
+        else:
+            print(form.errors)
+    else:
+        return HttpResponseRedirect("/../list_items/" + str(list_id) + "/")
+
+@login_required
+def add_item(request, list_id):
+    if request.method == 'POST':
+        temp = BridgeItemList()
+        temp.item = Item.objects.get(pk=request.POST['item'])
+        temp.list = List.objects.get(pk=list_id)
+        temp.save()
+        print("Item added to list.")
+        return HttpResponseRedirect("/../list_items/" + str(list_id) + "/")
+    else:
+        return HttpResponseRedirect("/../list_items/" + str(list_id) + "/")

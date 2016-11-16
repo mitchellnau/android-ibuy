@@ -16,6 +16,9 @@ class List(models.Model):
     title = models.CharField(max_length = 120)
     user = models.ForeignKey(User)
 
+    def __str__(self):
+        return self.title
+
 class ListForm(forms.ModelForm):
     class Meta:
         model = List
@@ -36,10 +39,13 @@ class Item(models.Model):
         ('1', 'Car'),
         ('2', 'Groceries'),
         ('3', 'Household'))
-    category = models.CharField(max_length=1, choices=urgency_type, default='2',
+    category = models.CharField(max_length=1, choices=category_type, default='2',
                                     null=True, blank=True)
     cost = models.IntegerField()
     date = models.DateField(auto_now_add=True, blank=True)
+
+    def __str__(self):
+        return self.title
 
 class ItemForm(forms.ModelForm):
     class Meta:
@@ -52,10 +58,20 @@ class BridgeItemUser(models.Model):
     item = models.ForeignKey(Item)
     user = models.ForeignKey(User)
 
+class BridgeItemList(models.Model):
+    item = models.ForeignKey(Item)
+    list = models.ForeignKey(List)
+
 class BridgeListUser(models.Model):
     list = models.ForeignKey(List)
     user = models.ForeignKey(User)
 
+
+
+class ItemListForm(forms.ModelForm):
+    class Meta:
+        model = BridgeItemList
+        fields = ('item', 'list')
 
 class ListUserForm(forms.ModelForm):
     class Meta:
