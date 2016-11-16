@@ -3,10 +3,10 @@
 {% block body %}
 <h3>Items in "{{list.title}}"</h3>
 {% for bridge in bridges %}
-
+<div class="panel panel-default">
 <table class="table">
 <thead>
- <tr>
+ <tr class="active">
  <th colspan=2><center>{{bridge.item.title}}</center></th>
  <th><form id="form" action="/list_items/{{list.id}}/edit_item/{{bridge.item.id}}/" method="get">
             {% csrf_token %}
@@ -41,6 +41,7 @@
  </tr>
 </tbody>
 </table>  
+</div>
 {% endfor %}
 
 <form id="addform" action="/list_items/{{list.id}}/add_item/" method="post">
@@ -60,6 +61,6 @@
             {{ createform|bootstrap }}
             <input class="btn btn-success" type="submit" name="submit" value="Create Item" />
 </form>
-  </div>
+</div>
 </div>
 {% endblock %}

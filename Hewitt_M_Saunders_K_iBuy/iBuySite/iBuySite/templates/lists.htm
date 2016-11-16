@@ -4,21 +4,19 @@
 {% block body %}
 <h3>Owned Lists</h3>
 {% for list in lists %}
-
-
-
+<div class="panel panel-default">
 <table class="table">
 <thead>
- <tr>
+ <tr class="active">
  <th colspan=2><center>{{list.title}}</center></th>
- <th><form id="form" action="../edit_list/{{list.id}}/" method="get">
+ <th><center><form id="form" action="../edit_list/{{list.id}}/" method="get">
             {% csrf_token %}
             <input class="btn btn-info btn-xs" type="submit" name="submit" value="Edit" />
-     </form></th>
- <th><form id="form" action="../remove_list/{{list.id}}/" method="post">
+     </form></center></th>
+ <th><center><form id="form" action="../remove_list/{{list.id}}/" method="post">
             {% csrf_token %}
             <input class="btn btn-danger btn-xs" type="submit" name="submit" value="Remove" />
-     </form></th>
+     </form></center></th>
 
  </tr>
 </thead>
@@ -37,6 +35,7 @@
  </tr>
 </tbody>
 </table>
+</div>
 {% endfor %}
 
 
@@ -45,12 +44,11 @@
 
 
 {% for object in membered_lists %}
+<div class="panel panel-default">
 <table class="table">
 <thead>
- <tr>
+ <tr class="active">
  <th colspan=2><center>{{object.list.title}}</center></th>
- <th></th>
- <th></th>
  </tr>
 </thead>
 <tbody>
@@ -64,11 +62,7 @@
 </tr>
 </tbody>
 </table>
-
-
-
-
-  <p>{{object.list.user}} </p>
+</div>
 {% endfor %}
 
 <form id="form" action="../add_list/" method="post">
