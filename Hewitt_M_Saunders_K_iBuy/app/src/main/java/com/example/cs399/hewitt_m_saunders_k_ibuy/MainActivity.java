@@ -3,6 +3,7 @@ package com.example.cs399.hewitt_m_saunders_k_ibuy;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
+import android.view.Window;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 
@@ -13,6 +14,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        this.requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_main);
 
         mWebView = (WebView) findViewById(R.id.activity_main_webview);
