@@ -161,3 +161,14 @@ def add_item(request, list_id):
         return HttpResponseRedirect("/../list_items/" + str(list_id) + "/")
     else:
         return HttpResponseRedirect("/../list_items/" + str(list_id) + "/")
+
+
+@login_required
+def remove_item(request, list_id, bridge_id):
+    if request.method == 'POST':
+        temp = BridgeItemList.objects.get(pk=bridge_id)
+        if request.user == temp.list.user:
+            temp.delete()
+        return HttpResponseRedirect("/../list_items/" + str(list_id) + "/")
+    else:
+        return HttpResponseRedirect("/../list_items/" + str(list_id) + "/")
