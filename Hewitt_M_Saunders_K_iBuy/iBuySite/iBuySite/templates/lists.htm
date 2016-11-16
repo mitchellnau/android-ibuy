@@ -6,12 +6,12 @@
   <p><a href="/../list_items/{{list.id}}/">{{list.title}}</a> {{list.user}} 
      <form id="form" action="../edit_list/{{list.id}}/" method="get">
             {% csrf_token %}
-            <input type="submit" name="submit" value="Edit" />
+            <input class="btn btn-info" type="submit" name="submit" value="Edit" />
      </form>
 
      <form id="form" action="../remove_list/{{list.id}}/" method="post">
             {% csrf_token %}
-            <input type="submit" name="submit" value="Remove" />
+            <input class="btn btn-danger" type="submit" name="submit" value="Remove" />
      </form>
      <a href="../list_users/{{list.id}}/">Users</a>
   </p>
@@ -25,6 +25,6 @@
 <form id="form" action="../add_list/" method="post">
             {% csrf_token %}
             {{ form.title }}
-            <input type="submit" name="submit" value="Add List" />
+            <input class="btn btn-success" type="submit" name="submit" value="Add List" />
 </form>
 {% endblock %}

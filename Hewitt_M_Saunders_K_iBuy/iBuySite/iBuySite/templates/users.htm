@@ -5,7 +5,7 @@
   <p>{{bridge.user.username}}
      <form id="form" action="/list/{{list.id}}/remove_user/{{bridge.id}}/" method="post">
             {% csrf_token %}
-            <input type="submit" name="submit" value="Remove" />
+            <input class="btn btn-danger" type="submit" name="submit" value="Remove" />
      </form>
   </p>
   
@@ -14,6 +14,6 @@
 <form id="form" action="/list/{{list.id}}/add_user/" method="post">
             {% csrf_token %}
             {{ form.user }}
-            <input type="submit" name="submit" value="Add User" />
+            <input class="btn btn-success" type="submit" name="submit" value="Add User" />
 </form>
 {% endblock %}
