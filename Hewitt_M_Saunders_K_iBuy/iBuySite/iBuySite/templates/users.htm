@@ -3,7 +3,7 @@
 <h3>Users in "{{list.title}}"</h3>
 {% for bridge in bridges %}
   <p>{{bridge.user.username}}
-     <form id="form" action="../remove_user/{{list.id}}/{{user.id}}/" method="post">
+     <form id="form" action="/list/{{list.id}}/remove_user/{{bridge.id}}/" method="post">
             {% csrf_token %}
             <input type="submit" name="submit" value="Remove" />
      </form>
@@ -11,8 +11,9 @@
   
 {% endfor %}
 
-<form id="" action="../{{list.id}}/add_user/" method="post">
+<form id="form" action="/list/{{list.id}}/add_user/" method="post">
             {% csrf_token %}
+            {{ form.user }}
             <input type="submit" name="submit" value="Add User" />
 </form>
 {% endblock %}

@@ -55,3 +55,9 @@ class BridgeItemUser(models.Model):
 class BridgeListUser(models.Model):
     list = models.ForeignKey(List)
     user = models.ForeignKey(User)
+
+
+class ListUserForm(forms.ModelForm):
+    class Meta:
+        model = BridgeListUser
+        fields = ('list', 'user')
