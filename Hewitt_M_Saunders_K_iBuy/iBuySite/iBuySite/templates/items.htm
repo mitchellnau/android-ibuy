@@ -3,6 +3,10 @@
 <h3>Items in "{{list.title}}"</h3>
 {% for bridge in bridges %}
   <p>{{bridge.item.title}}
+     <form id="form" action="/list_items/{{list.id}}/edit_item/{{bridge.item.id}}/" method="get">
+            {% csrf_token %}
+            <input type="submit" name="submit" value="Edit" />
+     </form>
      <form id="form" action="/list_items/{{list.id}}/remove_item/{{bridge.id}}/" method="post">
             {% csrf_token %}
             <input type="submit" name="submit" value="Remove" />

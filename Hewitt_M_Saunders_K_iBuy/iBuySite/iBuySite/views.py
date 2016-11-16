@@ -151,6 +151,26 @@ def create_item(request, list_id):
         return HttpResponseRedirect("/../list_items/" + str(list_id) + "/")
 
 @login_required
+def edit_item(request, list_id, item_id):
+    temp = List.objects.get(pk=list_id)
+    item = Item.objects.get(pk=item_id)
+    form = ItemForm(instance=item)
+    if request.method == 'POST':
+        form = ItemForm(data=request.POST, instance=item)
+        if form.is_valid():
+            temp = form.save(commit=False)
+            temp.save()
+            print("Item saved.")
+            return HttpResponseRedirect("/../list_items/" + str(list_id) + "/")
+        else:
+            print(form.errors)
+    elif request.method == 'GET':
+        form = ItemForm(instance=item)
+        return render(request, 'edit_item.htm', { 'list' : temp, 'form' : form, 'item' : item, 'errors' : form.errors})
+    else:
+        return render(request, 'edit_item.htm', { 'list' : temp, 'form' : form, 'item' : item, 'errors' : form.errors})
+
+@login_required
 def add_item(request, list_id):
     if request.method == 'POST':
         temp = BridgeItemList()

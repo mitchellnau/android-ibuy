@@ -17,7 +17,7 @@ from django.conf.urls import url
 from django.contrib import admin
 from django.conf import settings
 from django.conf.urls.static import static
-from iBuySite.views import home, register, userlogin, userlogout, get_lists, add_list, remove_list, list_users, add_listuser, remove_user, list_items, create_item, add_item, remove_item
+from iBuySite.views import home, register, userlogin, userlogout, get_lists, add_list, remove_list, list_users, add_listuser, remove_user, list_items, create_item, add_item, remove_item, edit_item
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
@@ -39,7 +39,7 @@ urlpatterns = [
 
     url(r'list_items/(?P<list_id>\w+)/create_item/$', create_item, name='create_item'),
     url(r'list_items/(?P<list_id>\w+)/add_item/$', add_item, name='add_item'),
-    #url(r'list_items/(?P<list_id>\w+)/edit_item/(?P<item_id>\w+)/$', 'iBuySite.views.edit_item', name='edit_item'),
+    url(r'list_items/(?P<list_id>\w+)/edit_item/(?P<item_id>\w+)/$', edit_item, name='edit_item'),
     url(r'list_items/(?P<list_id>\w+)/remove_item/(?P<bridge_id>\w+)/$', remove_item, name='remove_item'),
     url(r'^', home, name='home'),
 

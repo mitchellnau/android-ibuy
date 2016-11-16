@@ -13,7 +13,7 @@
 {% endfor %}
 <h3>Membered Lists</h3>
 {% for object in membered_lists %}
-  <p>{{object.list.title}} {{object.list.user}} </p>
+  <p><a href="/../list_items/{{object.list.id}}/">{{object.list.title}}</a> {{object.list.user}} </p>
 {% endfor %}
 
 <form id="form" action="../add_list/" method="post">
