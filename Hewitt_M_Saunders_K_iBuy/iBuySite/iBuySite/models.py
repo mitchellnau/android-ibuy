@@ -47,6 +47,13 @@ class Item(models.Model):
     def __str__(self):
         return self.title
 
+    def geturgency(self):
+        category_type = ['Low', 'Medium', 'High']
+        return category_type[int(self.category)-1]
+
+    def getcategory(self):
+        category_type = ['Car', 'Groceries', 'Household']
+        return category_type[int(self.category)-1]
 
     @property
     def assignees(self):
