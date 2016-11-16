@@ -46,8 +46,7 @@
 
 <form id="addform" action="/list_items/{{list.id}}/add_item/" method="post">
             {% csrf_token %}
-            {{ addform.item }}
-            {{ addform.user }}
+            {{ addform|bootstrap }}
             <input class="btn btn-success" type="submit" name="submit" value="Add Item" />
 </form>
 

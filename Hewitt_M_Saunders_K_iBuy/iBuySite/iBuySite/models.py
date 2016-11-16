@@ -78,7 +78,7 @@ class BridgeListUser(models.Model):
 class ItemListForm(forms.ModelForm):
     class Meta:
         model = BridgeItemList
-        fields = ('item', 'list', 'user')
+        fields = ('item', 'user')
 
 class ListUserForm(forms.ModelForm):
     class Meta:
