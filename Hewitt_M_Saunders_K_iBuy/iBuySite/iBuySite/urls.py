@@ -15,6 +15,8 @@ Including another URLconf
 """
 from django.conf.urls import url
 from django.contrib import admin
+from django.conf import settings
+from django.conf.urls.static import static
 from iBuySite.views import home, register, userlogin, userlogout, get_lists, add_list, remove_list, list_users
 
 urlpatterns = [
@@ -40,4 +42,4 @@ urlpatterns = [
     #url(r'list_items/(?P<list_id>\w+)/remove_item/(?P<item_id>\w+)/$', 'iBuySite.views.remove_item', name='remove_item'),
     url(r'^', home, name='home'),
 
-]
+]  + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
